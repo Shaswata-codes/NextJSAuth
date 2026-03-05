@@ -31,7 +31,6 @@ export default function SignupPage() {
             const response = await axios.post("/api/users/signup", user);
             toast.success("Signup Successful");
             router.push("/login");
-            console.log("User data being sent:", user);
         } catch (error) {
             console.log(error);
             toast.error("Signup Failed");
@@ -56,7 +55,7 @@ export default function SignupPage() {
             <label htmlFor='password'>password</label>
             <input 
             className='p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600'
-            type="password" id="password" onChange={(e) => setUser({...user, password : e.target.value})} placeholder='password' />
+            type="password" id="password" value={user.password} onChange={(e) => setUser({...user, password : e.target.value})} placeholder='password' />
 
             <button onClick={onSignup} className='p-2 bg-blue-500 text-white rounded-lg cursor-pointer'>{buttonDisabled ? "No Signup" : "Signup"}</button>
 
